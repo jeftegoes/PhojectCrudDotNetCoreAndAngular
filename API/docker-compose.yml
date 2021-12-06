@@ -1,0 +1,11 @@
+version: '3.4'
+services:
+  pgc.charge.api:
+    image: ${DOCKER_REGISTRY-}pgcchargeapi
+    build:
+      context: .
+      dockerfile: Web Charge/Examples.Charge.API/Dockerfile
+    networks:
+      - net
+networks:
+  net:

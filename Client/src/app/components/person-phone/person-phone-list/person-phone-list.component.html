@@ -1,0 +1,58 @@
+<style>
+  a {
+    color: #007bff !important;
+  }
+
+  a:hover {
+    color: #007bff !important;
+    text-decoration: underline !important;
+    cursor: default;
+  }
+</style>
+
+<div
+  class="
+    d-flex
+    justify-content-between
+    flex-wrap flex-md-nowrap
+    align-items-center
+    pt-3
+    pb-2
+    mb-3
+  "
+>
+  <h1 class="h5">Form of person phones</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <a [routerLink]="['/personPhone/new']" class="btn btn-sm btn-primary">
+        New
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Phone number</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let personPhone of personPhones">
+        <td>{{ personPhone.person.name }}</td>
+        <td>{{ personPhone.phoneNumber | mask: '(00) 00000-0000' }}</td>
+        <td>{{ personPhone.phoneNumberType.name }}</td>
+        <td>
+          <a [routerLink]="['/personPhone/edit', personPhone.businessEntityID, personPhone.phoneNumber, personPhone.phoneNumberTypeID]">Edit</a>
+        </td>
+        <td>
+          <a (click)="onDelete(personPhone)">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
